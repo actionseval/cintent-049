@@ -26,26 +26,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+        # with:
+        #   ref: ${{ github.event.pull_request.head.sha }}
 
       # CINTENT >> INSERT_CINTENT
-      - uses: JavidDitty/setup-cintent@a606c80c34ec190c6a20dea33d6d58ddb6c4e0cc
+      - uses: JavidDitty/setup-cintent@64faaac1333aabc2e0a00af6109b48ec4d8071bf
 
       - name: Install Python ${{ matrix.python_version }}
         uses: actions/setup-python@v5
         with:
             python-version: ${{ matrix.python_version }}
-            allow-prereleases: true
-            cache: "pip"
+            # allow-prereleases: true
+            # cache: "pip"
 
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('cli/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      # - name: Cache pip packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('cli/poetry.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pip-
 
       - name: Run tests
         run: |

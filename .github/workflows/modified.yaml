@@ -29,9 +29,6 @@ jobs:
         # with:
         #   ref: ${{ github.event.pull_request.head.sha }}
 
-      # CINTENT >> INSERT_CINTENT
-      - uses: JavidDitty/setup-cintent@64faaac1333aabc2e0a00af6109b48ec4d8071bf
-
       - name: Install Python ${{ matrix.python_version }}
         uses: actions/setup-python@v5
         with:
@@ -46,6 +43,9 @@ jobs:
       #     key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('cli/poetry.lock') }}
       #     restore-keys: |
       #       ${{ runner.os }}-pip-
+
+      # CINTENT >> INSERT_CINTENT
+      - uses: JavidDitty/setup-cintent@3e5b2faf83a2ad32c22a1cd0f86f5f20ea53a5ab
 
       - name: Run tests
         run: |
